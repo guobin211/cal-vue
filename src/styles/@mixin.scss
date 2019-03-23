@@ -1,0 +1,26 @@
+@mixin ratio($ratio: number) {
+  @media screen and
+  (min-resolution: $ratio + 'dppx'),
+  (-webkit-min-device-pixel-ratio: $ratio), /* Webkit-based browsers */
+  (min--moz-device-pixel-ratio: $ratio) {
+    @content;
+  }
+}
+
+// 固定像素的border,
+@mixin border-1px($width,$type,$color){
+  border: $width $type $color;
+  @include ratio(1.5) {
+    border: $width/1.5 $type $color;
+  }
+  @include ratio(2) {
+    border: $width/2 $type $color;
+  }
+  @include ratio(3) {
+    border: $width/3 $type $color;
+  }
+  @include ratio(4) {
+    border: $width/4 $type $color;
+  }
+}
+
